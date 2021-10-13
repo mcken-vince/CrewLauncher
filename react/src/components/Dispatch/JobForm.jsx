@@ -36,6 +36,8 @@ const JobForm = (props) => {
     const estTime = getEstTime(job.packageManHours, (selectedCrew ? crews[selectedCrew - 1] : {crew_size: 1}))
     const date = format(new Date(job.date), 'EEE MMM dd yyyy')
 
+    // Called on push of submit button.
+    // Start time must be between 6:00 and 18:00
     const validate = function(time, selectedCrew) {
       if (isAfter(new Date(time), setHours(new Date(time), 6)) && isBefore(new Date(time), setHours(new Date(time), 18)) && selectedCrew) {
         return save(time, selectedCrew)
@@ -57,6 +59,9 @@ const JobForm = (props) => {
       setError(errorMessage);
     }
 
+    // Call props.onEdit to save job details to database and update state
+    // Load up form for the next job on the list if there is one
+    // If not, redirect to /dispatch
     const save = function(time, selectedCrew) {
       const endTimeString = addHours(time, estTime)
       const endTime = format(endTimeString, 'kk')
@@ -80,11 +85,13 @@ const JobForm = (props) => {
           setStatus({ success: false, error: true, message: "Failure To Liftoff!"});
       })
     }
+
     const Item = styled(Paper)(({ theme }) => ({
       ...theme.typography.body2,
       padding: theme.spacing(1),
       textAlign: 'center'
     }));
+
     return (
       <Box width={'100%'}>
         <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'right'}} open={status.success || status.error} autoHideDuration={2000} onClose={() => setStatus({success: false, error: false, message: ""})}>
@@ -96,7 +103,7 @@ const JobForm = (props) => {
         <Stack spacing={5} sx={{maxHeight: 800,minHeight: 550, maxWidth: 900, alignItems: 'center',  margin: 'auto'}}>
           <Item className="page-header" >
             <Typography variant="h3" color="#DBEAF3" >
-            🚀 Edit Crew For The Job 🚀
+            Edit Job
             </Typography>
           </Item>
           <Grid container rowSpacing={5} columnSpacing={{ xs: 1, sm: 2, md: 3 }} sx={{justifyContent: 'center'}}>
@@ -114,10 +121,10 @@ const JobForm = (props) => {
               <Item sx={{ fontSize: 24}}>  Job Notes: {job.contractJobNotes}  </Item>
             </Grid>
             <Grid item xs={5.5}>
-              <Item sx={{ fontSize: 24}}>  Estimated Launch Time Before Crew Assigned :  {job.packageManHours} Hours   </Item>
+              <Item sx={{ fontSize: 24}}>  Total Man Hrs :  {job.packageManHours} Hours   </Item>
             </Grid>
             <Grid item xs={5.5}>
-              {estTime > 1 ? <Item sx={{ fontSize: 24}}> Estimated Launch Time After Crew Assigned : 🚀{estTime} Hours🚀 </Item> : estTime <= 1 && <Item sx={{ fontSize: 24}}> Estimated Time After Crew Assigned : 🚀 {estTime} Hour 🚀</Item>}
+              {estTime > 1 ? <Item sx={{ fontSize: 24}}> Crew Time Estimate : {estTime} Hours </Item> : estTime <= 1 && <Item sx={{ fontSize: 24}}> Crew Time Estimate : {estTime} Hour </Item>}
             </Grid>
         
           </Grid>
