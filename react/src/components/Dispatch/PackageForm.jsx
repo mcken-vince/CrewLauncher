@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import { Box, Button, FormControl, Stack, InputLabel, OutlinedInput, TextField, Alert, Snackbar, Card, Typography } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 
-
-
-
 const PackageForm = (props) => {
   const { onSubmit } = props;
   const browserHistory = useHistory();
@@ -78,8 +75,6 @@ const PackageForm = (props) => {
       
       {error.length > 0 && <Alert severity="error">{`${error.join(', ')} cannot be blank.`}</Alert>}
       
-
-
       <FormControl>
         <InputLabel htmlFor="title">Title</InputLabel>
         <OutlinedInput
