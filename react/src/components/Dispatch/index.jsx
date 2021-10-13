@@ -15,7 +15,6 @@ const Dispatch = function(props) {
   const { onEdit, createPackage, createContract, updateQuoteState } = props;
   const { url } = useRouteMatch();
 
-
   const crews = props.crews;
   const clients = props.clients;
   const packages = props.packages;

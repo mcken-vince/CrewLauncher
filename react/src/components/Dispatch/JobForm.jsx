@@ -48,7 +48,7 @@ const JobForm = (props) => {
             setRocketClass(false);
           }, 1950);
         })
-      }else if (!selectedCrew) {
+      } else if (!selectedCrew) {
         errorMessage.push('Select A Crew To Launch!');
       } else {
         errorMessage.push('Select A Time For Launch!');
