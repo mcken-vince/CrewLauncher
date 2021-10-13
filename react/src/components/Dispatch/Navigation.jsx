@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link,NavLink, useRouteMatch } from 'react-router-dom';
+import { NavLink, useRouteMatch } from 'react-router-dom';
 import { Toolbar, Drawer, MenuList, MenuItem, AppBar, Divider, CssBaseline, IconButton, Button, Badge } from '@mui/material';
 import MenuIcon from '@mui/icons-material/MenuOpen';
 import NavigationQuotes from './Navigation/NavigationQuotes';
@@ -74,7 +74,7 @@ const Navigation = (props) => {
       sx={{display: { xs: 'block', sm: 'block' },
       '& .MuiDrawer-paper': { boxSizing: 'border-box', backgroundImage: "url(https://acegif.com/wp-content/gif/outerspace-6.gif)"},
     }}>
-          <Button><h1 className='App-header' onClick={()=> setNavOpen(!navOpen)}>Crew🚀Launcher</h1></Button>
+          <Button><h1 className='App-header' onClick={()=> setNavOpen(!navOpen)}>Crew Launcher</h1></Button>
 
           <Divider />
           <Toolbar>
@@ -86,16 +86,16 @@ const Navigation = (props) => {
           <Divider />
       <Toolbar>
         <MenuList sx={{mt: 4, ml: 5}} className="font-color">
-          <MenuItem sx={{mt:2}} exact component={NavLink} to='/dispatch' activeStyle={activeLink}> 🚀 Dashboard 🚀</MenuItem>
-          <MenuItem sx={{mt:2}} component={NavLink} to={`${url}/crews`} activeStyle={activeLink}>🚀 Crews</MenuItem>
-          <MenuItem sx={{mt:2}} exact component={NavLink} to={`${url}/clients`} activeStyle={activeLink}>🚀 Clients</MenuItem>
-          <MenuItem sx={{mt:2, mb: 40}} exact component={NavLink} to={`${url}/contracts`} activeStyle={activeLink}>🚀 Contracts</MenuItem>
+          <MenuItem sx={{mt:2}} exact component={NavLink} to='/dispatch' activeStyle={activeLink}>Dashboard</MenuItem>
+          <MenuItem sx={{mt:2}} component={NavLink} to={`${url}/crews`} activeStyle={activeLink}>Crews</MenuItem>
+          <MenuItem sx={{mt:2}} exact component={NavLink} to={`${url}/clients`} activeStyle={activeLink}>Clients</MenuItem>
+          <MenuItem sx={{mt:2, mb: 40}} exact component={NavLink} to={`${url}/contracts`} activeStyle={activeLink}>Contracts</MenuItem>
           <Divider />
           <b>Create Forms</b>
             <MenuList>
               <Divider />
-              <MenuItem sx={{mt:2}} component={NavLink} to={`${url}/contracts/new`} activeStyle={activeLink}>🚀 New Contract</MenuItem>
-              <MenuItem sx={{mt:2}} component={NavLink} to={`${url}/packages/new`} activeStyle={activeLink}>🚀 New Package</MenuItem>
+              <MenuItem sx={{mt:2}} component={NavLink} to={`${url}/contracts/new`} activeStyle={activeLink}>New Contract</MenuItem>
+              <MenuItem sx={{mt:2}} component={NavLink} to={`${url}/packages/new`} activeStyle={activeLink}>New Package</MenuItem>
             </MenuList>          
         </MenuList>
       </Toolbar>
